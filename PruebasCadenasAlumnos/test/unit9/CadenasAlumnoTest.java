@@ -69,20 +69,20 @@ public class CadenasAlumnoTest {
     @Test
     public void testEsMayorA() {
         System.out.println("esMayor minusculas");
-        String cadena1 = "entornos";
-        String cadena2 = "desarrollo";
+        String cadena1 = "desarrollo";
+        String cadena2 = "entornos";
         CadenasAlumno instance = new CadenasAlumno();
-        boolean expResult = cadena1.compareTo(cadena2) > 0;
+        boolean expResult = cadena1.compareTo(cadena2) < 0;
         boolean result = instance.esMayor(cadena1, cadena2);
         assertEquals(expResult, result);
     }
     @Test
     public void testEsMayorB() {
         System.out.println("esMayor mayúscula");
-        String cadena1 = "entornos";
-        String cadena2 = "Entornos";
+        String cadena1 = "Entornos";
+        String cadena2 = "entornos";
         CadenasAlumno instance = new CadenasAlumno();
-        boolean expResult = cadena1.compareTo(cadena2) > 0;
+        boolean expResult = cadena1.compareTo(cadena2) < 0;
         boolean result = instance.esMayor(cadena1, cadena2);
         assertEquals(expResult, result);
     }      
@@ -97,99 +97,108 @@ public class CadenasAlumnoTest {
         String cadena1 = "entornos";
         String cadena2 = "desarrollo";
         CadenasAlumno instance = new CadenasAlumno();
-        boolean expResult = cadena1.compareTo(cadena2) < 0;
-        boolean result = instance.esMayor(cadena1, cadena2);
+        boolean expResult = cadena1.compareTo(cadena2) > 0;
+        boolean result = instance.esMenor(cadena1, cadena2);
         assertEquals(expResult, result);
     }
     @Test
     public void testEsMenorB() {
         System.out.println("esMenor mayúsculas");
-        String cadena1 = "entornos";
-        String cadena2 = "Entornos";
+        String cadena1 = "Entornos";
+        String cadena2 = "entornos";
         CadenasAlumno instance = new CadenasAlumno();
-        boolean expResult = cadena1.compareTo(cadena2) < 0;
-        boolean result = instance.esMayor(cadena1, cadena2);
+        boolean expResult = cadena1.compareTo(cadena2) > 0;
+        boolean result = instance.esMenor(cadena1, cadena2);
         assertEquals(expResult, result);
     }
 
     /**
      * Test of comparaIgnorandoMayusculas method, of class CadenasAlumno.
-     */ /*
+     */
     @Test
     public void testComparaIgnorandoMayusculas() {
         System.out.println("comparaIgnorandoMayusculas");
-        String cadena1 = "";
-        String cadena2 = "";
+        String cadena1 = "Entornos";
+        String cadena2 = "desarrollo";
         CadenasAlumno instance = new CadenasAlumno();
-        boolean expResult = false;
+        boolean expResult = cadena1.compareToIgnoreCase(cadena2) < 0;
         boolean result = instance.comparaIgnorandoMayusculas(cadena1, cadena2);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
      * Test of reemplazaTodos method, of class CadenasAlumno.
-     */ /*
+     */ 
     @Test
-    public void testReemplazaTodos() {
-        System.out.println("reemplazaTodos");
-        String cadena = "";
-        String regla = "";
-        String cambio = "";
+    public void testReemplazaTodosA() {
+        System.out.println("reemplazaTodos cambio un caracter");
+        String cadena = "Entornos";
+        String regla = "o";
+        String cambio = "*";
         CadenasAlumno instance = new CadenasAlumno();
-        String expResult = "";
+        String expResult = cadena.replaceAll(regla, cambio);
         String result = instance.reemplazaTodos(cadena, regla, cambio);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
-
+    @Test
+    public void testReemplazaTodosB() {
+        System.out.println("reemplazaTodos regla varios caracteres");
+        String cadena = "Entornos";
+        String regla = "or";
+        String cambio = "*";
+        CadenasAlumno instance = new CadenasAlumno();
+        String expResult = cadena.replaceAll(regla, cambio);
+        String result = instance.reemplazaTodos(cadena, regla, cambio);
+        assertEquals(expResult, result);
+    }
+     @Test
+    public void testReemplazaTodosC() {
+        System.out.println("reemplazaTodos cambio varios caracteres");
+        String cadena = "Entornos";
+        String regla = "o";
+        String cambio = "**";
+        CadenasAlumno instance = new CadenasAlumno();
+        String expResult = cadena.replaceAll(regla, cambio);
+        String result = instance.reemplazaTodos(cadena, regla, cambio);
+        assertEquals(expResult, result);
+    }
     /**
      * Test of reemplazaPrimero method, of class CadenasAlumno.
-     */ /*
+     */ 
     @Test
     public void testReemplazaPrimero() {
         System.out.println("reemplazaPrimero");
-        String cadena = "";
-        String regla = "";
-        String cambio = "";
+        String cadena = "Entornos";
+        String regla = "E";
+        String cambio = "X";
         CadenasAlumno instance = new CadenasAlumno();
-        String expResult = "";
+        String expResult = cadena.replaceFirst(regla, cambio);
         String result = instance.reemplazaPrimero(cadena, regla, cambio);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
-   
     /**
      * Test of convertirMayusculas method, of class CadenasAlumno.
-     */ /*
+     */ 
     @Test
     public void testConvertirMayusculas() {
         System.out.println("convertirMayusculas");
-        String cadena = "";
+        String cadena = "entornos";
         CadenasAlumno instance = new CadenasAlumno();
-        String expResult = "";
+        String expResult = cadena.toUpperCase();
         String result = instance.convertirMayusculas(cadena);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
-
     /**
      * Test of convertirMinusculas method, of class CadenasAlumno.
-     */ /*
+     */ 
     @Test
     public void testConvertirMinusculas() {
         System.out.println("convertirMinusculas");
-        String cadena = "";
+        String cadena = "ENTORNOS";
         CadenasAlumno instance = new CadenasAlumno();
-        String expResult = "";
+        String expResult = cadena.toLowerCase();
         String result = instance.convertirMinusculas(cadena);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**

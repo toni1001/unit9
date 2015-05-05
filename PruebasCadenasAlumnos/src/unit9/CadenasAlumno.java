@@ -6,6 +6,7 @@
 package unit9;
 
 import static java.lang.System.out;
+import java.util.ArrayList;
 
 /**
  * La clase CadenaAlumno implementa los principales métodos de la clase String,
@@ -58,18 +59,12 @@ public class CadenasAlumno {
      */
     public boolean esMayor(String cadena1, String cadena2) {
 
-        int min;
         int i = 0;
-
-        if (cadena1.length() <= cadena2.length()) {
-            min = cadena1.length();
-        } else {
-            min = cadena2.length();
-        }
+        int min = Math.min(cadena1.length(), cadena2.length());     
         while (i < min) {
-            if (cadena1.charAt(i) > cadena2.charAt(i)) {
+            if (cadena1.charAt(i) < cadena2.charAt(i)) {
                 return true;
-            } else if (cadena1.charAt(i) < cadena2.charAt(i)) {
+            } else if (cadena1.charAt(i) > cadena2.charAt(i)) {
                 return false;
             } else {
                 i++;
@@ -88,18 +83,13 @@ public class CadenasAlumno {
      */
     public boolean esMenor(String cadena1, String cadena2) {
 
-        int min;
         int i = 0;
-
-        if (cadena1.length() <= cadena2.length()) {
-            min = cadena1.length();
-        } else {
-            min = cadena2.length();
-        }
+        int min = Math.min(cadena1.length(), cadena2.length());     
+        
         while (i < min) {
-            if (cadena1.charAt(i) < cadena2.charAt(i)) {
+            if (cadena1.charAt(i) > cadena2.charAt(i)) {
                 return true;
-            } else if (cadena1.charAt(i) > cadena2.charAt(i)) {
+            } else if (cadena1.charAt(i) < cadena2.charAt(i)) {
                 return false;
             } else {
                 i++;
@@ -118,18 +108,14 @@ public class CadenasAlumno {
      */
     public boolean comparaIgnorandoMayusculas(String cadena1, String cadena2) {
 
-        int min;
+        
         int i = 0;
         String cadenaConv1;
         String cadenaConv2;
         boolean minuscula;
         int num;
-
-        if (cadena1.length() <= cadena2.length()) {
-            min = cadena1.length();
-        } else {
-            min = cadena2.length();
-        }
+        int min = Math.min(cadena1.length(), cadena2.length());     
+        
         cadenaConv1 = convertirMayusculas(cadena1);
         cadenaConv2 = convertirMayusculas(cadena2);
 
@@ -158,8 +144,9 @@ public class CadenasAlumno {
 
         String cadenaModificada = "";
         boolean coincide;
+        int limite = cadena.length() - (regla.length() - 1);
 
-        for (int i = 0; i < cadena.length() - (regla.length() - 1); i++) {
+        for (int i = 0; i < limite; i++) {
             coincide = true;
             for (int j = 0; j < regla.length(); j++) {
                 if (cadena.charAt(i + j) != regla.charAt(j)) {
@@ -170,14 +157,23 @@ public class CadenasAlumno {
                 for (int k = 0; k < cambio.length(); k++) {
                     cadenaModificada += cambio.charAt(k);
                 }
+                i += regla.length() - 1;
             } else {
 
                 cadenaModificada += cadena.charAt(i);
             }
         }
+        if (cadena.length() != cadenaModificada.length()) {
+            for (int i = (cadena.length() - (regla.length() - 1)); i < cadena.length(); i++) {
+                cadenaModificada += cadena.charAt(i);
+            }
+        }
         return cadenaModificada;
     }
-
+    
+    
+    
+    
     /**
      * Método reemplazaPrimero: En este caso solo reemplaza la primera
      * ocurrencia de regla, por el String cambio.
@@ -486,11 +482,11 @@ public class CadenasAlumno {
     }
 
     public static void main(String[] args) {
-        String cadena1 = "entornos";
+        String cadena1 = "Entornos";
         String cadena2 = "desarrollo";
         boolean resultado;
-       
+        CadenasAlumno miCadena = new CadenasAlumno();
+        System.out.println(miCadena.convertirMinusculas("ENTORNOS"));
         
-        System.out.println();
     }
 }
