@@ -3,7 +3,7 @@
  * Diseño de Aplicaciones Multiplataforma - Semipresencial Grupo B.
  * Ejercicios Tema 5 de Entornos de Desarrollo - Cadenas Alumno
  */
-package unit5;
+package unit9;
 
 import static java.lang.System.out;
 
@@ -486,6 +486,11 @@ public class CadenasAlumno {
     }
 
     public static void main(String[] args) {
-
+        String cadena1 = "entornos";
+        String cadena2 = "desarrollo";
+        boolean resultado;
+       
+        
+        System.out.println();
     }
 }

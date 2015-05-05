@@ -11,7 +11,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import unit5.CadenasAlumno;
+
 
 /**
  *
@@ -65,34 +65,51 @@ public class CadenasAlumnoTest {
    /**
      * Test of esMayor method, of class CadenasAlumno.
      */
-    /*
+    
     @Test
-    public void testEsMayor() {
-        System.out.println("esMayor");
-        String cadena1 = "";
-        String cadena2 = "";
+    public void testEsMayorA() {
+        System.out.println("esMayor minusculas");
+        String cadena1 = "entornos";
+        String cadena2 = "desarrollo";
         CadenasAlumno instance = new CadenasAlumno();
-        boolean expResult = false;
+        boolean expResult = cadena1.compareTo(cadena2) > 0;
         boolean result = instance.esMayor(cadena1, cadena2);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
+    @Test
+    public void testEsMayorB() {
+        System.out.println("esMayor mayúscula");
+        String cadena1 = "entornos";
+        String cadena2 = "Entornos";
+        CadenasAlumno instance = new CadenasAlumno();
+        boolean expResult = cadena1.compareTo(cadena2) > 0;
+        boolean result = instance.esMayor(cadena1, cadena2);
+        assertEquals(expResult, result);
+    }      
+
 
     /**
      * Test of esMenor method, of class CadenasAlumno.
-     */ /*
+     */ 
     @Test
-    public void testEsMenor() {
-        System.out.println("esMenor");
-        String cadena1 = "";
-        String cadena2 = "";
+    public void testEsMenorA() {
+        System.out.println("esMenor minusculas");
+        String cadena1 = "entornos";
+        String cadena2 = "desarrollo";
         CadenasAlumno instance = new CadenasAlumno();
-        boolean expResult = false;
-        boolean result = instance.esMenor(cadena1, cadena2);
+        boolean expResult = cadena1.compareTo(cadena2) < 0;
+        boolean result = instance.esMayor(cadena1, cadena2);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    }
+    @Test
+    public void testEsMenorB() {
+        System.out.println("esMenor mayúsculas");
+        String cadena1 = "entornos";
+        String cadena2 = "Entornos";
+        CadenasAlumno instance = new CadenasAlumno();
+        boolean expResult = cadena1.compareTo(cadena2) < 0;
+        boolean result = instance.esMayor(cadena1, cadena2);
+        assertEquals(expResult, result);
     }
 
     /**
