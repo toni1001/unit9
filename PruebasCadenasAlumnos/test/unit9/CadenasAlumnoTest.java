@@ -203,79 +203,77 @@ public class CadenasAlumnoTest {
 
     /**
      * Test of quitaEspacios method, of class CadenasAlumno.
-     */ /*
+     */ 
     @Test
     public void testQuitaEspacios() {
         System.out.println("quitaEspacios");
-        String cadena = "";
+        String cadena = "Entornos de Desarrollo";
         CadenasAlumno instance = new CadenasAlumno();
-        String expResult = "";
+        String expResult = cadena.replace(" ", "");
         String result = instance.quitaEspacios(cadena);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
-
     /**
      * Test of longitudCadena method, of class CadenasAlumno.
-     */ /*
+     */ 
     @Test
     public void testLongitudCadena() {
         System.out.println("longitudCadena");
-        String cadena = "";
+        String cadena = "Entornos";
         CadenasAlumno instance = new CadenasAlumno();
-        long expResult = 0L;
+        long expResult = cadena.length();
         long result = instance.longitudCadena(cadena);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+        }
 
     /**
      * Test of empiezaCon method, of class CadenasAlumno.
-     */ /*
+     */ 
     @Test
-    public void testEmpiezaCon() {
-        System.out.println("empiezaCon");
-        String cadena = "";
-        String prefijo = "";
+    public void testEmpiezaConA() {
+        System.out.println("empiezaCon un solo carácter");
+        String cadena = "Entornos";
+        String prefijo = "E";
         CadenasAlumno instance = new CadenasAlumno();
-        boolean expResult = false;
+        boolean expResult = cadena.startsWith(prefijo);
         boolean result = instance.empiezaCon(cadena, prefijo);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    }
+    @Test
+    public void testEmpiezaConB() {
+        System.out.println("empiezaCon varios caracteres");
+        String cadena = "Entornos";
+        String prefijo = "Ent";
+        CadenasAlumno instance = new CadenasAlumno();
+        boolean expResult = cadena.startsWith(prefijo);
+        boolean result = instance.empiezaCon(cadena, prefijo);
+        assertEquals(expResult, result);
     }
 
     /**
      * Test of acabaEn method, of class CadenasAlumno.
-     */ /*
+     */
     @Test
     public void testAcabaEn() {
         System.out.println("acabaEn");
-        String cadena = "";
-        String sufijo = "";
+        String cadena = "Entornos";
+        String sufijo = "s";
         CadenasAlumno instance = new CadenasAlumno();
-        boolean expResult = false;
+        boolean expResult = cadena.endsWith(sufijo);
         boolean result = instance.acabaEn(cadena, sufijo);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
-
     /**
      * Test of posicionPrimeraCadena method, of class CadenasAlumno.
-     */ /*
+     */ 
     @Test
     public void testPosicionPrimeraCadena() {
         System.out.println("posicionPrimeraCadena");
-        String cadena = "";
-        String letra = "";
+        String cadena = "Entornos";
+        String letra = "t";
         CadenasAlumno instance = new CadenasAlumno();
-        long expResult = 0L;
+        long expResult = cadena.indexOf(letra);
         long result = instance.posicionPrimeraCadena(cadena, letra);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    } */
+    }
 }

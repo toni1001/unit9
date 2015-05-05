@@ -385,13 +385,17 @@ public class CadenasAlumno {
         if (cadena.length() < sufijo.length()) {
             return false;
         }
-        for (int i = cadena.length() - sufijo.length(); i < cadena.length(); i++) {
-            if (cadena.charAt(i) != sufijo.charAt(i - sufijo.length())) {
-                coincide = false;
+        for (int i = cadena.length()-sufijo.length(); i < cadena.length()-1; i++) {
+            coincide = true;
+            for (int j = 0; j < sufijo.length(); j++) {
+                if (cadena.charAt(i + j) != sufijo.charAt(j)) {
+                    coincide = false;
+                }
             }
         }
         return coincide;
     }
+    
 
     /**
      * Método poscion primeraCadena: Devuelve la posicion de la primera
@@ -486,7 +490,7 @@ public class CadenasAlumno {
         String cadena2 = "desarrollo";
         boolean resultado;
         CadenasAlumno miCadena = new CadenasAlumno();
-        System.out.println(miCadena.convertirMinusculas("ENTORNOS"));
+        System.out.println(miCadena.acabaEn(cadena1, "os"));
         
     }
 }
