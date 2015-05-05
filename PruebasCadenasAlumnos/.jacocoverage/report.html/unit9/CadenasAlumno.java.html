@@ -1,0 +1,497 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>CadenasAlumno.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;PruebasCadenasAlumnos&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">unit9</a> &gt; <span class="el_source">CadenasAlumno.java</span></div><h1>CadenasAlumno.java</h1><pre class="source lang-java linenums">/*
+ *
+ * Diseño de Aplicaciones Multiplataforma - Semipresencial Grupo B.
+ * Ejercicios Tema 5 de Entornos de Desarrollo - Cadenas Alumno
+ */
+package unit9;
+
+import static java.lang.System.out;
+import java.util.ArrayList;
+
+/**
+ * La clase CadenaAlumno implementa los principales métodos de la clase String,
+ * pero en este caso sin emplear los métodos propios de la clase. Se procesan
+ * las cadenas carácter a carácter. El único método empleado es el que devuelve
+ * la longitud de la cadena.
+ *
+ * @author Antonio Meseguer Giménez
+ * @date 18-feb-2015
+ */
+public class CadenasAlumno {
+
+    /**
+     * Constructor por defecto clase CadenasAlumno.
+     */
+<span class="fc" id="L25">    public CadenasAlumno() {</span>
+
+<span class="fc" id="L27">    }</span>
+
+    /**
+     * Método sonIguales: Compara las cadenas caracter a caracter.
+     *
+     * @param cadena1
+     * @param cadena2
+     * @return true si son iguales, false si no lo son.
+     */
+    public boolean sonIguales(String cadena1, String cadena2) {
+
+<span class="fc" id="L38">        boolean iguales = true;</span>
+
+<span class="fc bfc" id="L40" title="All 2 branches covered.">        if (cadena1.length() != cadena2.length()) {</span>
+<span class="fc" id="L41">            return false;</span>
+        } else {
+<span class="fc bfc" id="L43" title="All 2 branches covered.">            for (int i = 0; i &lt; cadena1.length(); i++) {</span>
+<span class="fc bfc" id="L44" title="All 2 branches covered.">                if (cadena1.charAt(i) != cadena2.charAt(i)) {</span>
+<span class="fc" id="L45">                    iguales = false;</span>
+                }
+            }
+<span class="fc" id="L48">            return iguales;</span>
+        }
+    }
+
+    /**
+     * Método esMayor: Compara el valor de los caracteres correspondiente a la
+     * tabla ASCII.
+     *
+     * @param cadena1
+     * @param cadena2
+     * @return true si la primera es mayor, false lo es la primera.
+     */
+    public boolean esMayor(String cadena1, String cadena2) {
+
+<span class="fc" id="L62">        int i = 0;</span>
+<span class="fc" id="L63">        int min = Math.min(cadena1.length(), cadena2.length());     </span>
+<span class="pc bpc" id="L64" title="1 of 2 branches missed.">        while (i &lt; min) {</span>
+<span class="pc bpc" id="L65" title="1 of 2 branches missed.">            if (cadena1.charAt(i) &lt; cadena2.charAt(i)) {</span>
+<span class="fc" id="L66">                return true;</span>
+<span class="nc bnc" id="L67" title="All 2 branches missed.">            } else if (cadena1.charAt(i) &gt; cadena2.charAt(i)) {</span>
+<span class="nc" id="L68">                return false;</span>
+            } else {
+<span class="nc" id="L70">                i++;</span>
+            }
+        }
+<span class="nc" id="L73">        return false;</span>
+    }
+
+    /**
+     * Método esMenor: Compara el valor de los caracteres correspondiente a la
+     * tabla ASCII.
+     *
+     * @param cadena1
+     * @param cadena2
+     * @return true si la cadena1 es menor, false si lo es cadena2.
+     */
+    public boolean esMenor(String cadena1, String cadena2) {
+
+<span class="fc" id="L86">        int i = 0;</span>
+<span class="fc" id="L87">        int min = Math.min(cadena1.length(), cadena2.length());     </span>
+        
+<span class="pc bpc" id="L89" title="1 of 2 branches missed.">        while (i &lt; min) {</span>
+<span class="fc bfc" id="L90" title="All 2 branches covered.">            if (cadena1.charAt(i) &gt; cadena2.charAt(i)) {</span>
+<span class="fc" id="L91">                return true;</span>
+<span class="pc bpc" id="L92" title="1 of 2 branches missed.">            } else if (cadena1.charAt(i) &lt; cadena2.charAt(i)) {</span>
+<span class="fc" id="L93">                return false;</span>
+            } else {
+<span class="nc" id="L95">                i++;</span>
+            }
+        }
+<span class="nc" id="L98">        return false;</span>
+    }
+
+    /**
+     * Metodo comparaIgnorandoMayusculas: Realiza la comparación commo en casos
+     * anteriores pero ignorando si son mayúsculas o minúsculas.
+     *
+     * @param cadena1
+     * @param cadena2
+     * @return true si es mayor cadena1, false si lo es cadena2
+     */
+    public boolean comparaIgnorandoMayusculas(String cadena1, String cadena2) {
+
+        
+<span class="fc" id="L112">        int i = 0;</span>
+        String cadenaConv1;
+        String cadenaConv2;
+        boolean minuscula;
+        int num;
+<span class="fc" id="L117">        int min = Math.min(cadena1.length(), cadena2.length());     </span>
+        
+<span class="fc" id="L119">        cadenaConv1 = convertirMayusculas(cadena1);</span>
+<span class="fc" id="L120">        cadenaConv2 = convertirMayusculas(cadena2);</span>
+
+<span class="pc bpc" id="L122" title="1 of 2 branches missed.">        while (i &lt; min) {</span>
+<span class="pc bpc" id="L123" title="1 of 2 branches missed.">            if (cadenaConv1.charAt(i) &lt; cadenaConv2.charAt(i)) {</span>
+<span class="nc" id="L124">                return true;</span>
+<span class="pc bpc" id="L125" title="1 of 2 branches missed.">            } else if (cadenaConv1.charAt(i) &gt; cadenaConv2.charAt(i)) {</span>
+<span class="fc" id="L126">                return false;</span>
+            } else {
+<span class="nc" id="L128">                i++;</span>
+            }
+        }
+<span class="nc" id="L131">        return false;</span>
+    }
+
+    /**
+     * Método remplazaTodos: Reemplaza todas las ocurrencias del String regla
+     * por el String cambio.
+     *
+     * @param cadena
+     * @param regla
+     * @param cambio
+     * @return cadena modificada.
+     */
+    public String reemplazaTodos(String cadena, String regla, String cambio) {
+
+<span class="fc" id="L145">        String cadenaModificada = &quot;&quot;;</span>
+        boolean coincide;
+<span class="fc" id="L147">        int limite = cadena.length() - (regla.length() - 1);</span>
+
+<span class="fc bfc" id="L149" title="All 2 branches covered.">        for (int i = 0; i &lt; limite; i++) {</span>
+<span class="fc" id="L150">            coincide = true;</span>
+<span class="fc bfc" id="L151" title="All 2 branches covered.">            for (int j = 0; j &lt; regla.length(); j++) {</span>
+<span class="fc bfc" id="L152" title="All 2 branches covered.">                if (cadena.charAt(i + j) != regla.charAt(j)) {</span>
+<span class="fc" id="L153">                    coincide = false;</span>
+                }
+            }
+<span class="fc bfc" id="L156" title="All 2 branches covered.">            if (coincide) {</span>
+<span class="fc bfc" id="L157" title="All 2 branches covered.">                for (int k = 0; k &lt; cambio.length(); k++) {</span>
+<span class="fc" id="L158">                    cadenaModificada += cambio.charAt(k);</span>
+                }
+<span class="fc" id="L160">                i += regla.length() - 1;</span>
+            } else {
+
+<span class="fc" id="L163">                cadenaModificada += cadena.charAt(i);</span>
+            }
+        }
+<span class="fc bfc" id="L166" title="All 2 branches covered.">        if (cadena.length() != cadenaModificada.length()) {</span>
+<span class="fc bfc" id="L167" title="All 2 branches covered.">            for (int i = (cadena.length() - (regla.length() - 1)); i &lt; cadena.length(); i++) {</span>
+<span class="fc" id="L168">                cadenaModificada += cadena.charAt(i);</span>
+            }
+        }
+<span class="fc" id="L171">        return cadenaModificada;</span>
+    }
+    
+    
+    
+    
+    /**
+     * Método reemplazaPrimero: En este caso solo reemplaza la primera
+     * ocurrencia de regla, por el String cambio.
+     *
+     * @param cadena
+     * @param regla
+     * @param cambio
+     * @return la cadena modificada.
+     */
+    public String reemplazaPrimero(String cadena, String regla, String cambio) {
+
+<span class="fc" id="L188">        String cadenaModificada = &quot;&quot;;</span>
+        boolean coincide, cambiado;
+<span class="fc" id="L190">        cambiado = false;</span>
+<span class="fc bfc" id="L191" title="All 2 branches covered.">        for (int i = 0; i &lt; cadena.length() - (regla.length() - 1); i++) {</span>
+<span class="fc" id="L192">            coincide = true;</span>
+<span class="fc bfc" id="L193" title="All 2 branches covered.">            for (int j = 0; j &lt; regla.length(); j++) {</span>
+<span class="fc bfc" id="L194" title="All 2 branches covered.">                if (cadena.charAt(i + j) != regla.charAt(j)) {</span>
+<span class="fc" id="L195">                    coincide = false;</span>
+                }
+            }
+<span class="pc bpc" id="L198" title="1 of 4 branches missed.">            if (coincide &amp;&amp; !cambiado) {</span>
+<span class="fc bfc" id="L199" title="All 2 branches covered.">                for (int k = 0; k &lt; cambio.length(); k++) {</span>
+<span class="fc" id="L200">                    cadenaModificada += cambio.charAt(k);</span>
+                }
+<span class="fc" id="L202">                cambiado = true;</span>
+            } else {
+<span class="fc" id="L204">                cadenaModificada += cadena.charAt(i);</span>
+            }
+        }
+<span class="fc" id="L207">        return cadenaModificada;</span>
+    }
+
+    /**
+     * Método muestraSplitLimite: Muetra por pantalla, fragmentos de cadena
+     * delimitados por el String regla, el númeto de veces marcado por limite.
+     *
+     * @param cadena
+     * @param regla
+     * @param limite
+     */
+    public void muestraSplitLimite(String cadena, String regla, int limite) {
+
+<span class="nc" id="L220">        String cadenaModificada = &quot;&quot;;</span>
+        boolean coincide;
+
+<span class="nc bnc" id="L223" title="All 2 branches missed.">        for (int i = 0; i &lt; cadena.length() - (regla.length() - 1); i++) {</span>
+<span class="nc" id="L224">            coincide = true;</span>
+<span class="nc bnc" id="L225" title="All 2 branches missed.">            for (int j = 0; j &lt; regla.length(); j++) {</span>
+<span class="nc bnc" id="L226" title="All 2 branches missed.">                if (cadena.charAt(i + j) != regla.charAt(j)) {</span>
+<span class="nc" id="L227">                    coincide = false;</span>
+                }
+            }
+<span class="nc bnc" id="L230" title="All 4 branches missed.">            if (coincide &amp;&amp; limite &gt; 1) {</span>
+<span class="nc" id="L231">                out.println(cadenaModificada);</span>
+<span class="nc" id="L232">                cadenaModificada = &quot;&quot;;</span>
+<span class="nc" id="L233">                limite--;</span>
+            } else {
+
+<span class="nc" id="L236">                cadenaModificada += cadena.charAt(i);</span>
+            }
+        }
+<span class="nc" id="L239">        out.println(cadenaModificada);</span>
+<span class="nc" id="L240">    }</span>
+
+    /**
+     * Método muestraSplit: Muestra por pantalla todos los fragmentos de cadena
+     * delimitados por regla.
+     *
+     * @param cadena
+     * @param regla
+     */
+    public void muestraSplit(String cadena, String regla) {
+
+<span class="nc" id="L251">        String cadenaModificada = &quot;&quot;;</span>
+        boolean coincide;
+
+<span class="nc bnc" id="L254" title="All 2 branches missed.">        for (int i = 0; i &lt; cadena.length() - (regla.length() - 1); i++) {</span>
+<span class="nc" id="L255">            coincide = true;</span>
+<span class="nc bnc" id="L256" title="All 2 branches missed.">            for (int j = 0; j &lt; regla.length(); j++) {</span>
+<span class="nc bnc" id="L257" title="All 2 branches missed.">                if (cadena.charAt(i + j) != regla.charAt(j)) {</span>
+<span class="nc" id="L258">                    coincide = false;</span>
+                }
+            }
+<span class="nc bnc" id="L261" title="All 2 branches missed.">            if (coincide) {</span>
+<span class="nc" id="L262">                out.println(cadenaModificada);</span>
+<span class="nc" id="L263">                cadenaModificada = &quot;&quot;;</span>
+            } else {
+<span class="nc" id="L265">                cadenaModificada += cadena.charAt(i);</span>
+            }
+        }
+<span class="nc" id="L268">        out.println(cadenaModificada);</span>
+<span class="nc" id="L269">    }</span>
+
+    /**
+     * Método convertirMayusculas: Convierte a mayúscula la cadena introducida
+     * como argumento, modificando el valor de cada caracter, segun tabla ASCII.
+     *
+     * @param cadena
+     * @return cadena convertida a mayúsculas.
+     */
+    public String convertirMayusculas(String cadena) {
+
+<span class="fc" id="L280">        String cadenaConv = &quot;&quot;;</span>
+        boolean minuscula;
+        int num;
+
+<span class="fc bfc" id="L284" title="All 2 branches covered.">        for (int i = 0; i &lt; cadena.length(); i++) {</span>
+<span class="pc bpc" id="L285" title="1 of 4 branches missed.">            minuscula = cadena.charAt(i) &gt; 96 &amp;&amp; cadena.charAt(i) &lt; 123;</span>
+<span class="fc bfc" id="L286" title="All 2 branches covered.">            if (minuscula) {</span>
+<span class="fc" id="L287">                num = cadena.charAt(i) - 32;</span>
+<span class="fc" id="L288">                cadenaConv += (char) num;</span>
+            } else {
+<span class="fc" id="L290">                cadenaConv += cadena.charAt(i);</span>
+            }
+        }
+<span class="fc" id="L293">        return cadenaConv;</span>
+    }
+
+    /**
+     * Método convertirMinusculas: Convierte a minúsculas la cadena introducida
+     * como argumento, modificando el valor de cada caracter, según tabla ASCII.
+     *
+     * @param cadena
+     * @return cadena convertida a minúsculas.
+     */
+    public String convertirMinusculas(String cadena) {
+
+<span class="fc" id="L305">        String cadenaConv = &quot;&quot;;</span>
+        boolean mayuscula;
+        int num;
+
+<span class="fc bfc" id="L309" title="All 2 branches covered.">        for (int i = 0; i &lt; cadena.length(); i++) {</span>
+<span class="pc bpc" id="L310" title="2 of 4 branches missed.">            mayuscula = cadena.charAt(i) &gt; 64 &amp;&amp; cadena.charAt(i) &lt; 91;</span>
+<span class="pc bpc" id="L311" title="1 of 2 branches missed.">            if (mayuscula) {</span>
+<span class="fc" id="L312">                num = cadena.charAt(i) + 32;</span>
+<span class="fc" id="L313">                cadenaConv += (char) num;</span>
+            } else {
+<span class="nc" id="L315">                cadenaConv += cadena.charAt(i);</span>
+            }
+        }
+<span class="fc" id="L318">        return cadenaConv;</span>
+    }
+
+    /**
+     * Método quitaEspacios: Elimina los espacios iniciales y/o finales de la
+     * cadena introducida como argumento
+     *
+     * @param cadena
+     * @return cadena sin espacios al principio o al final.
+     */
+    public String quitaEspacios(String cadena) {
+
+<span class="fc" id="L330">        String cadenaSinBlancos = &quot;&quot;;</span>
+
+<span class="fc bfc" id="L332" title="All 2 branches covered.">        for (int i = 0; i &lt; cadena.length(); i++) {</span>
+<span class="fc bfc" id="L333" title="All 2 branches covered.">            if (cadena.charAt(i) != ' ') {</span>
+<span class="fc" id="L334">                cadenaSinBlancos += cadena.charAt(i);</span>
+            }
+        }
+<span class="fc" id="L337">        return cadenaSinBlancos;</span>
+    }
+
+    /**
+     * Método longuitudCadena: Devuleve un entero long, con la cantidad de la
+     * cadena introducida como argumento
+     *
+     * @param cadena
+     * @return longuitud de la cadena
+     */
+    public long longitudCadena(String cadena) {
+
+<span class="fc" id="L349">        return cadena.length();</span>
+    }
+
+    /**
+     * Método empiezaCon: Comprueba si cadena comienza por prefijo.
+     *
+     * @param cadena
+     * @param prefijo
+     * @return true si es cierto, false si no lo es.
+     */
+    public boolean empiezaCon(String cadena, String prefijo) {
+
+<span class="fc" id="L361">        boolean coincide = true;</span>
+
+<span class="pc bpc" id="L363" title="1 of 2 branches missed.">        if (cadena.length() &lt; prefijo.length()) {</span>
+<span class="nc" id="L364">            return false;</span>
+        }
+<span class="fc bfc" id="L366" title="All 2 branches covered.">        for (int i = 0; i &lt; prefijo.length(); i++) {</span>
+<span class="pc bpc" id="L367" title="1 of 2 branches missed.">            if (cadena.charAt(i) != prefijo.charAt(i)) {</span>
+<span class="nc" id="L368">                coincide = false;</span>
+            }
+        }
+<span class="fc" id="L371">        return coincide;</span>
+    }
+
+    /**
+     * Método acabaEn: Comprueba si cadena acaba por sufijo.
+     *
+     * @param cadena
+     * @param sufijo
+     * @return true si es cierto, false si no lo es.
+     */
+    public boolean acabaEn(String cadena, String sufijo) {
+
+<span class="fc" id="L383">        boolean coincide = true;</span>
+
+<span class="pc bpc" id="L385" title="1 of 2 branches missed.">        if (cadena.length() &lt; sufijo.length()) {</span>
+<span class="nc" id="L386">            return false;</span>
+        }
+<span class="pc bpc" id="L388" title="1 of 2 branches missed.">        for (int i = cadena.length()-sufijo.length(); i &lt; cadena.length()-1; i++) {</span>
+<span class="nc" id="L389">            coincide = true;</span>
+<span class="nc bnc" id="L390" title="All 2 branches missed.">            for (int j = 0; j &lt; sufijo.length(); j++) {</span>
+<span class="nc bnc" id="L391" title="All 2 branches missed.">                if (cadena.charAt(i + j) != sufijo.charAt(j)) {</span>
+<span class="nc" id="L392">                    coincide = false;</span>
+                }
+            }
+        }
+<span class="fc" id="L396">        return coincide;</span>
+    }
+    
+
+    /**
+     * Método poscion primeraCadena: Devuelve la posicion de la primera
+     * ocurrencia de la cadena letra
+     *
+     * @param cadena
+     * @param letra
+     * @return un entero tipo long.
+     */
+    public long posicionPrimeraCadena(String cadena, String letra) {
+
+<span class="fc" id="L410">        boolean coincide = true;</span>
+
+<span class="pc bpc" id="L412" title="1 of 2 branches missed.">        for (int i = 0; i &lt; cadena.length() - (letra.length() - 1); i++) {</span>
+<span class="fc bfc" id="L413" title="All 2 branches covered.">            for (int j = 0; j &lt; letra.length(); j++) {</span>
+<span class="fc bfc" id="L414" title="All 2 branches covered.">                if (cadena.charAt(i + j) != letra.charAt(j)) {</span>
+<span class="fc" id="L415">                    coincide = false;</span>
+                }
+            }
+<span class="fc bfc" id="L418" title="All 2 branches covered.">            if (coincide) {</span>
+<span class="fc" id="L419">                return i;</span>
+            } else {
+<span class="fc" id="L421">                coincide = true;</span>
+            }
+        }
+<span class="nc" id="L424">        return -1;</span>
+    }
+
+    /**
+     * Método extraerSubtring: Extrae fragmento de cadena, a partir de
+     * posicionInicio.
+     *
+     * @param cadena
+     * @param posicionInicio
+     * @return String con el fragmento de cadena.
+     */
+    public String extraerSubstring(String cadena, int posicionInicio) {
+
+<span class="nc" id="L437">        String substring = &quot;&quot;;</span>
+
+<span class="nc bnc" id="L439" title="All 2 branches missed.">        for (int i = posicionInicio + 1; i &lt; cadena.length(); i++) {</span>
+<span class="nc" id="L440">            substring += cadena.charAt(i);</span>
+        }
+<span class="nc" id="L442">        return substring;</span>
+    }
+
+    /**
+     * Método extraerSubstring: Extrae fragmento de cadena, a partir de
+     * posicionInicio hasta posicionFinal.
+     *
+     * @param cadena
+     * @param posicionInicio
+     * @param posicionFinal
+     * @return Sting con el fragmento de cadena.
+     */
+    public String extraerSubstring(String cadena, int posicionInicio, int posicionFinal) {
+
+<span class="nc" id="L456">        String substring = &quot;&quot;;</span>
+
+<span class="nc bnc" id="L458" title="All 2 branches missed.">        if (posicionFinal &gt; cadena.length()) {</span>
+<span class="nc" id="L459">            System.err.println(&quot;Error: La posicion final excede la longitud de la cadena.&quot;);</span>
+<span class="nc" id="L460">            posicionFinal = cadena.length();</span>
+        }
+<span class="nc bnc" id="L462" title="All 2 branches missed.">        for (int i = posicionInicio + 1; i &lt; posicionFinal; i++) {</span>
+<span class="nc" id="L463">            substring += cadena.charAt(i);</span>
+        }
+<span class="nc" id="L465">        return substring;</span>
+    }
+
+    /**
+     * Método concatenaCadenas: Une las dos cadenas introducidas como argumento.
+     *
+     * @param cadena1
+     * @param cadena2
+     * @return String con cadena1+cadena2.
+     */
+    public String concatenaCadenas(String cadena1, String cadena2) {
+
+<span class="nc" id="L477">        String cadenaConcatenada = &quot;&quot;;</span>
+
+<span class="nc bnc" id="L479" title="All 2 branches missed.">        for (int i = 0; i &lt; cadena1.length(); i++) {</span>
+<span class="nc" id="L480">            cadenaConcatenada += cadena1.charAt(i);</span>
+        }
+<span class="nc bnc" id="L482" title="All 2 branches missed.">        for (int i = 0; i &lt; cadena2.length(); i++) {</span>
+<span class="nc" id="L483">            cadenaConcatenada += cadena2.charAt(i);</span>
+        }
+<span class="nc" id="L485">        return cadenaConcatenada;</span>
+    }
+
+    public static void main(String[] args) {
+<span class="nc" id="L489">        String cadena1 = &quot;Entornos&quot;;</span>
+<span class="nc" id="L490">        String cadena2 = &quot;desarrollo&quot;;</span>
+        boolean resultado;
+<span class="nc" id="L492">        CadenasAlumno miCadena = new CadenasAlumno();</span>
+<span class="nc" id="L493">        System.out.println(miCadena.acabaEn(cadena1, &quot;os&quot;));</span>
+        
+<span class="nc" id="L495">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.4.201502262128</span></div></body></html>
